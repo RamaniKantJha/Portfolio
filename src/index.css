@@ -11,14 +11,32 @@
 }
 
 :root {
-    --color-bg: #1f1f38;
-    --color-bg-variant: #2c2c6c;
-    --color-primary: #4db5ff;
-    --color-primary-variant: rgba(77, 181, 255, 0.4);
+    --color-bg: #0a0a23;
+    --color-bg-variant: #1a1a3e;
+    --color-primary: #00d4ff;
+    --color-primary-variant: rgba(0, 212, 255, 0.4);
+    --color-secondary: #ff6b6b;
+    --color-accent: #4ecdc4;
+    --color-purple: #9c27b0;
+    --color-orange: #ff9800;
+    --color-green: #4caf50;
     --color-white: #fff;
-    --color-light: rgba(255, 255, 255, 0.6);
+    --color-light: rgba(255, 255, 255, 0.8);
+
+    --gradient-primary: linear-gradient(135deg, #00d4ff, #4ecdc4);
+    --gradient-secondary: linear-gradient(135deg, #ff6b6b, #ff9800);
+    --gradient-purple: linear-gradient(135deg, #9c27b0, #e91e63);
+    --gradient-bg: linear-gradient(135deg, #0a0a23, #1a1a3e, #2d1b69);
+    --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    
+    --shadow-primary: 0 8px 32px rgba(0, 212, 255, 0.3);
+    --shadow-secondary: 0 8px 32px rgba(255, 107, 107, 0.3);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 15px 35px rgba(0, 212, 255, 0.4);
 
     --transition: all 400ms ease;
+    --transition-fast: all 200ms ease;
+    --transition-bounce: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --container-width-lg: 75%;
     --container-width-md: 86%;
@@ -30,15 +48,29 @@ html {
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-variant);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-secondary);
 }
 
 body{
     font-family: 'Poppins', sans-serif;
-    background: var(--color-bg);
+    background: var(--gradient-bg);
     color: var(--color-white);
     line-height: 1.7;
-    background-image: url('../src/assets/bg-texture.png');
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 /*General Styles*/
@@ -53,11 +85,39 @@ h1, h2, h3, h4, h5 {
 
 h1 {
     font-size: 2.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6));
+    }
 }
 
 section {
     margin-top: 8rem;
-    /*height: 100vh;*/
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 section > h2, section > h5 {
@@ -66,8 +126,24 @@ section > h2, section > h5 {
 }
 
 section > h2 {
-    color: var(--color-primary);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 3rem;
+    font-size: 2.2rem;
+    animation: slideInFromTop 0.8s ease-out;
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .text-light {
@@ -81,38 +157,110 @@ a {
 
 a:hover {
     color: var(--color-white);
+    text-shadow: 0 0 10px var(--color-primary);
 }
 
 .btn {
     width: max-content;
     display: inline-block;
     color: var(--color-primary);
-    padding: 0.7rem 1.2rem;
-    border-radius: 0.4rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
     cursor: pointer;
-    border: 1px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
+    transition: var(--transition-bounce);
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary);
     transition: var(--transition);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 0;
 }
 
 .btn:hover {
-    background: var(--color-white);
     color: var(--color-bg);
     border-color: transparent;
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
 }
 
 .btn-primary {
-    background: var(--color-primary);
+    background: var(--gradient-primary);
     color: var(--color-bg);
+    border: 2px solid transparent;
+    box-shadow: var(--shadow-primary);
+}
+
+.btn-primary:hover {
+    background: var(--gradient-secondary);
+    box-shadow: var(--shadow-secondary);
+    transform: translateY(-3px) scale(1.05);
 }
 
 img {
     display: block;
     width: 100%;
     object-fit: cover;
+    border-radius: 1rem;
+    transition: var(--transition);
+}
+
+img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-card);
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
 }
 
 /*Media Queries (Medium Devices)*/
-
 @media screen and (max-width: 1024px) {
     .container {
         width: var(--container-width-md);
@@ -121,10 +269,13 @@ img {
     section {
         margin-top: 6rem;
     }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 /*Media Queries (Small Devices)*/
-
 @media screen and (max-width: 600px) {
     .container {
         width: var(--container-width-sm);
@@ -132,5 +283,10 @@ img {
 
     section > h2 {
         margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
     }
 }
