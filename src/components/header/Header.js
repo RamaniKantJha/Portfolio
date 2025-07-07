@@ -72,7 +72,7 @@ const Header = () => {
                     className={"text-light"}
                     variants={itemVariants}
                 >
-                    Fullstack Developer
+                    AI/ML Intern
                 </motion.h5>
                 
                 <motion.div variants={itemVariants}>

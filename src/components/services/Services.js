@@ -14,23 +14,23 @@ const Services = () => {
                     <ul className={"service__list"}>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Wireframing and prototyping interactive user interfaces.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Designing modern, responsive layouts for web and mobile.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>User research, persona creation, and journey mapping.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>UI kits and design systems for scalable products.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Usability testing and iterative design improvements.</p>
                         </li>
                     </ul>
                 </article>
@@ -42,27 +42,23 @@ const Services = () => {
                     <ul className={"service__list"}>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Building fast, responsive, and accessible web applications.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Fullstack development with React, Python, and modern frameworks.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>RESTful API design and integration.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Database modeling and management (MySQL, DBMS).</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </li>
-                        <li>
-                            <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Deployment, CI/CD, and cloud hosting solutions.</p>
                         </li>
                     </ul>
                 </article>
@@ -74,23 +70,23 @@ const Services = () => {
                     <ul className={"service__list"}>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Technical blogging and documentation for developers.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Creating educational tutorials and coding walkthroughs.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Video content for tech, coding, and data science topics.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Infographics and visual content for social media.</p>
                         </li>
                         <li>
                             <BsCheck2 className={"service__list-icon"} />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Open-source contributions and project showcases.</p>
                         </li>
                     </ul>
                 </article>

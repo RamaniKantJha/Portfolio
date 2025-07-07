@@ -73,7 +73,6 @@ const About = () => {
             >
                 About me
             </motion.h2>
-            
             <motion.div 
                 className={"container about__container"}
                 variants={containerVariants}
@@ -97,7 +96,6 @@ const About = () => {
                         />
                     </div>
                 </motion.div>
-                
                 <motion.div 
                     className={"about__content"}
                     variants={itemVariants}
@@ -127,7 +125,6 @@ const About = () => {
                             <h5>Experience</h5>
                             <small>3+ Years</small>
                         </motion.article>
-                        
                         <motion.article 
                             className={'about__card'}
                             variants={cardVariants}
@@ -158,8 +155,10 @@ const About = () => {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         viewport={{ once: true }}
                     >
-                        Passionate fullstack developer with expertise in modern web technologies. I love creating seamless user experiences and robust backend solutions. My journey in development has been driven by curiosity and a constant desire to learn and innovate.
+                        I'm a recent B.Tech graduate in Computer Science and Engineering with a passion for AI, data science, and full-stack development. From building responsive web apps to optimizing machine learning models for real-world use cases, I strive to combine analytical thinking with creative expression. A problem-solver at heart, I’m constantly pushing the boundaries of what technology can do.
                     </motion.p>
+                    
+           
                     
                     <motion.a 
                         href={"#contact"} 
