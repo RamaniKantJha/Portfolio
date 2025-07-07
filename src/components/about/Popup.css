@@ -12,7 +12,7 @@
 }
 
 .popup__content {
-  background: #fff;
+  background: var(--gradient-bg);
   border-radius: 1rem;
   padding: 2rem;
   max-width: 90vw;
