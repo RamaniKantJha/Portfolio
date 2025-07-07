@@ -1,6 +1,6 @@
 header {
     height: 120vh;
-    padding-top: 7rem;
+    padding-top: 0;
     overflow: hidden;
     position: relative;
     background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
@@ -42,6 +42,10 @@ header::before {
     color: var(--color-light);
     font-weight: 400;
     text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.header__container h5:first-of-type {
+    margin-top: 8px;
 }
 
 .header__container h1 {
@@ -197,6 +201,7 @@ header::before {
 @media screen and (max-width: 600px) {
     header {
         height: 110vh;
+        padding-top: 0;
     }
     .header__container h1 {
         font-size: 2rem;
@@ -206,5 +211,8 @@ header::before {
         height: 22rem;
         left: calc(50% - 8rem);
         bottom: 0;
+    }
+    .CTA {
+        margin-bottom: 0.5rem;
     }
 }
