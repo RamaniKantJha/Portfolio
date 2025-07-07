@@ -32,17 +32,6 @@ const Nav = () => {
         }
     };
 
-    const activeVariants = {
-        active: {
-            scale: 1.2,
-            transition: { type: "spring", stiffness: 300, damping: 10 }
-        },
-        inactive: {
-            scale: 1,
-            transition: { duration: 0.2 }
-        }
-    };
-
     return (
         <motion.nav
             variants={navVariants}
