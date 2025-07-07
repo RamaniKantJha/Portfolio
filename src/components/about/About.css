@@ -202,3 +202,10 @@
         padding: 1rem;
     }
 }
+
+.experience__card {
+    /* Optionally add unique styles for experience card */
+}
+.project__card {
+    /* Optionally add unique styles for project card */
+}

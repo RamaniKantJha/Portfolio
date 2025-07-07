@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './About.css'
 import ME from '../../assets/me-about.jpg'
 import {FaAward} from "react-icons/fa"
 import {VscFolderLibrary} from 'react-icons/vsc'
 import { motion } from "framer-motion";
+import Popup from './Popup';
+
+const LazyExperience = React.lazy(() => import('../experience/Experience'));
+const LazyProjects = React.lazy(() => import('../portfolio/Portfolio'));
 
 const About = () => {
+    const [showExperience, setShowExperience] = useState(false);
+    const [showProjects, setShowProjects] = useState(false);
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -105,7 +112,7 @@ const About = () => {
                         variants={containerVariants}
                     >
                         <motion.article 
-                            className={'about__card'}
+                            className={'about__card experience__card'}
                             variants={cardVariants}
                             whileHover={{ 
                                 scale: 1.05,
@@ -113,6 +120,7 @@ const About = () => {
                                 transition: { type: "spring", stiffness: 300 }
                             }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => setShowExperience(true)}
                         >
                             <motion.div
                                 animate={{ 
@@ -126,7 +134,7 @@ const About = () => {
                             <small>3+ Years</small>
                         </motion.article>
                         <motion.article 
-                            className={'about__card'}
+                            className={'about__card project__card'}
                             variants={cardVariants}
                             whileHover={{ 
                                 scale: 1.05,
@@ -134,6 +142,7 @@ const About = () => {
                                 transition: { type: "spring", stiffness: 300 }
                             }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => setShowProjects(true)}
                         >
                             <motion.div
                                 animate={{ 
@@ -158,8 +167,6 @@ const About = () => {
                         I'm a recent B.Tech graduate in Computer Science and Engineering with a passion for AI, data science, and full-stack development. From building responsive web apps to optimizing machine learning models for real-world use cases, I strive to combine analytical thinking with creative expression. A problem-solver at heart, I’m constantly pushing the boundaries of what technology can do.
                     </motion.p>
                     
-           
-                    
                     <motion.a 
                         href={"#contact"} 
                         className={"btn btn-primary"}
@@ -172,6 +179,16 @@ const About = () => {
                     >
                         Let's Talk
                     </motion.a>
+                    <Popup show={showExperience} onClose={() => setShowExperience(false)}>
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <LazyExperience />
+                        </React.Suspense>
+                    </Popup>
+                    <Popup show={showProjects} onClose={() => setShowProjects(false)}>
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <LazyProjects />
+                        </React.Suspense>
+                    </Popup>
                 </motion.div>
             </motion.div>
         </section>

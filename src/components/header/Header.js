@@ -75,13 +75,12 @@ const Header = () => {
                     AI/ML Intern
                 </motion.h5>
                 
-                <motion.div variants={itemVariants}>
+                <motion.div variants={itemVariants} style={{ marginBottom: 15 }}>
                     <CTA />
                 </motion.div>
 
-                <motion.div variants={itemVariants}>
-                    <Socials />
-                </motion.div>
+                {/* Move Socials outside stacking flow to avoid extra gap */}
+                <Socials />
 
                 <motion.div 
                     className={"me"}
