@@ -115,7 +115,7 @@ const Header = () => {
                         }
                     }}
                 >
-                    Scroll Down
+                    Scroll to Bottom
                 </motion.a>
 
             </motion.div>

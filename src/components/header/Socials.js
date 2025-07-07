@@ -30,6 +30,14 @@ const Socials = () => {
         }
     };
 
+    // Animation for all icons: continuous 3D rotation
+    const iconAnimation = {
+        animate: {
+            rotateY: [0, 360],
+            transition: { duration: 3, repeat: Infinity, ease: "linear" }
+        }
+    };
+
     return (
         <motion.div 
             className={"header__socials"}
@@ -50,12 +58,7 @@ const Socials = () => {
                 }}
                 whileTap={{ scale: 0.9 }}
             >
-                <motion.div
-                    animate={{ 
-                        rotateY: [0, 360],
-                        transition: { duration: 3, repeat: Infinity, ease: "linear" }
-                    }}
-                >
+                <motion.div {...iconAnimation}>
                     <BsLinkedin />
                 </motion.div>
             </motion.a>
@@ -73,12 +76,7 @@ const Socials = () => {
                 }}
                 whileTap={{ scale: 0.9 }}
             >
-                <motion.div
-                    animate={{ 
-                        scale: [1, 1.1, 1],
-                        transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                >
+                <motion.div {...iconAnimation}>
                     <FaGithub />
                 </motion.div>
             </motion.a>
@@ -96,12 +94,7 @@ const Socials = () => {
                 }}
                 whileTap={{ scale: 0.9 }}
             >
-                <motion.div
-                    animate={{ 
-                        rotate: [0, 10, -10, 0],
-                        transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                >
+                <motion.div {...iconAnimation}>
                     <FiDribbble />
                 </motion.div>
             </motion.a>

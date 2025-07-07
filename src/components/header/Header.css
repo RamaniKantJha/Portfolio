@@ -62,10 +62,14 @@ header::before {
 
 /*CTA*/
 .CTA {
-    margin-top: 2.5rem;
     display: flex;
-    gap: 1.2rem;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /*Socials*/
@@ -138,7 +142,7 @@ header::before {
     filter: grayscale(0%) contrast(1.2) brightness(1.2);
 }
 
-/*Scroll Down*/
+/*Scroll to bottom*/
 .scroll__down {
     position: absolute;
     right: -2.3rem;
