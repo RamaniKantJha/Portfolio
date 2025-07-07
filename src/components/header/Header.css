@@ -1,5 +1,5 @@
 header {
-    height: 100vh;
+    height: 120vh;
     padding-top: 7rem;
     overflow: hidden;
     position: relative;
@@ -118,7 +118,7 @@ header::before {
     height: 30rem;
     position: absolute;
     left: calc(50% - 11rem);
-    margin-top: 4rem;
+    bottom: 0;
     border-radius: 12rem 12rem 0 0;
     overflow: hidden;
     padding: 5rem 1.5rem 1.5rem 1.5rem;
@@ -180,37 +180,31 @@ header::before {
 /*Media Queries (Medium Devices)*/
 @media screen and (max-width: 1024px) {
     header {
-        height: 68vh;
+        height: 100vh;
     }
-
     .header__container h1 {
         font-size: 2.5rem;
     }
-
     .me {
         width: 18rem;
         height: 25rem;
         left: calc(50% - 9rem);
+        bottom: 0;
     }
 }
 
 /*Media Queries (Small Devices)*/
 @media screen and (max-width: 600px) {
-    header{
-        height: 90vh;
+    header {
+        height: 110vh;
     }
-
     .header__container h1 {
         font-size: 2rem;
     }
-
-    .header__socials, .scroll__down {
-        display: none;
-    }
-
     .me {
         width: 16rem;
         height: 22rem;
         left: calc(50% - 8rem);
+        bottom: 0;
     }
 }
