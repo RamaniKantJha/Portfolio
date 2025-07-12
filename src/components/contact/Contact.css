@@ -1,40 +1,54 @@
 .container.contact__container {
-    width: 58%;
+    width: 70%;
     display: grid;
-    grid-template-columns: 30% 58%;
-    gap: 12%;
+    grid-template-columns: 32% 60%;
+    gap: 8%;
+    margin: 0 auto;
+    padding: var(--space-lg) 0;
 }
 
 .contact__options {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: var(--space-md);
     margin-bottom: 20px;
 }
 
 .contact__option {
-    background: var(--color-bg-variant);
-    padding: 1.2rem;
-    border-radius: 1.2rem;
+    background: var(--gradient-glass);
+    padding: var(--space-md);
+    border-radius: 1.5rem;
     text-align: center;
-    border: 1px solid transparent;
-    transition: var(--transition);
+    border: 1.5px solid var(--color-glass-border);
+    box-shadow: var(--shadow-glass);
+    transition: var(--transition-bounce);
+    will-change: transform, box-shadow;
 }
-
 .contact__option:hover {
-    background: transparent;
+    background: var(--gradient-card);
     border-color: var(--color-primary-variant);
+    box-shadow: var(--shadow-primary), 0 0 32px 8px var(--color-primary-variant);
+    transform: translateY(-8px) scale(1.03) rotateY(4deg);
 }
 
 .contact__option-icon {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+    transition: var(--transition);
 }
 
 .contact__option a {
     margin-top: 0.7rem;
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: var(--font-size-xs);
+    color: var(--color-primary);
+    transition: var(--transition);
+}
+.contact__option a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
 }
 
 .contact__option h5 {
@@ -44,30 +58,65 @@
 form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: var(--space-md);
+    background: var(--gradient-glass);
+    border-radius: 1.5rem;
+    padding: var(--space-md);
+    box-shadow: var(--shadow-glass);
+    border: 1.5px solid var(--color-glass-border);
+    transition: var(--transition-bounce);
+    will-change: transform, box-shadow;
 }
-
+form:hover {
+    box-shadow: var(--shadow-primary);
+    transform: scale(1.01);
+}
 input, textarea {
     width: 100%;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    background: transparent;
+    padding: var(--space-sm);
+    border-radius: 0.7rem;
+    background: var(--gradient-card);
     border: 2px solid var(--color-primary-variant);
     resize: none;
     color: var(--color-white);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-xs);
+    transition: var(--transition);
+}
+input:focus, textarea:focus {
+    border-color: var(--color-primary);
+    background: var(--gradient-glass);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary-variant);
 }
 
-/*Media Queries (Medium Devices)*/
-@media screen and (max-width: 1024px) {
-    .container.contact__container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+/* --- Responsive Media Queries --- */
+@media (max-width: 1200px) {
+    .container.contact__container { grid-template-columns: 1fr; gap: var(--space-md); width: 90%; }
+}
+@media (max-width: 900px) {
+    .container.contact__container { width: 98%; padding: var(--space-md) 0; }
+}
+@media (max-width: 600px) {
+    .container.contact__container { width: 100%; padding: var(--space-sm) 0; }
+    form { padding: var(--space-sm); }
 }
 
-/*Media Queries (Small Devices)*/
-@media screen and (max-width: 600px) {
-    .container.contact__container {
-        width: var(--container-width-sm);
-    }
+@media (min-width: 1201px) {
+  .contact__container {
+    padding: 3rem 6rem;
+    gap: 3rem;
+  }
+  .contact__form input, .contact__form textarea {
+    font-size: 1.15rem;
+    padding: 1.25rem 2rem;
+  }
+  .contact__form button {
+    font-size: 1.25rem;
+    padding: 1.25rem 2.5rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  /* Add large-screen styles for Contact here */
 }

@@ -1,30 +1,46 @@
+/* Hide scrollbars for the entire website but allow scrolling */
+html, body {
+  /* overflow: hidden !important; */
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none !important;
+}
+body {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important;    /* Firefox */
+}
+
 nav {
-    background: rgba(10, 10, 35, 0.4);
-    width: max-content;
+    background: var(--gradient-glass);
+    width: 42%;
+    min-width: 280px;
+    max-width: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.5rem 1.5rem;
-    z-index: 2;
+    z-index: 100;
     position: fixed;
-    left: 38%;
-    transform: translateX(-50%);
-    bottom: 2rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 3rem;
     gap: 1rem;
-    border-radius: 2rem;
+    border-radius: 2.5rem;
     height: 65px;
     min-height: 65px;
     max-height: 65px;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+    border: 1.5px solid var(--color-glass-border);
+    box-shadow: var(--shadow-glass), 0 2px 24px 0 rgba(0,212,255,0.10);
     transition: var(--transition);
+    animation: fadeIn 1.2s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
 nav:hover {
-    background: rgba(10, 10, 35, 0.6);
-    box-shadow: var(--shadow-primary);
-    transform: translateX(-50%) translateY(-5px);
+    background: var(--gradient-card);
 }
 
 nav a {
@@ -33,12 +49,20 @@ nav a {
     border-radius: 50%;
     display: flex;
     color: var(--color-light);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: var(--transition-bounce);
     position: relative;
     overflow: hidden;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
 }
-
+nav a:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
 nav a::before {
     content: '';
     position: absolute;
@@ -52,67 +76,156 @@ nav a::before {
     transition: var(--transition);
     z-index: -1;
 }
-
-nav a:hover {
-    background: rgba(0, 212, 255, 0.1);
+nav a:hover, nav a:focus {
+    background: rgba(0, 212, 255, 0.13);
     color: var(--color-primary);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.18);
+    transform: scale(1.12);
 }
-
-nav a:hover::before {
-    transform: scale(0.8);
+nav a:hover::before, nav a:focus::before {
+    transform: scale(0.9);
 }
-
 nav a.active {
     background: var(--gradient-primary);
     color: var(--color-bg);
-    box-shadow: var(--shadow-primary);
+    box-shadow: var(--shadow-primary), 0 0 0 8px var(--color-primary-variant);
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    min-height: 48px;
-    max-width: 48px;
-    max-height: 48px;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+    max-width: 52px;
+    max-height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     margin: 0;
-    /* Ensures the active button stays circular and inside nav */
+    z-index: 3;
+    animation: navActiveGlow 1.2s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
-
 nav a.active::after {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
     background: var(--gradient-secondary);
     border-radius: 50%;
     z-index: -2;
     animation: pulse 2s infinite;
     pointer-events: none;
+    box-shadow: 0 0 24px 8px var(--color-secondary);
+    opacity: 0.5;
 }
-
+@keyframes navActiveGlow {
+    0% { box-shadow: 0 0 0 0 var(--color-primary-variant); }
+    100% { box-shadow: 0 0 0 8px var(--color-primary-variant); }
+}
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
-@media (max-width: 1024px) {
-  nav {
-    left: 31.5%;
-  }
+/* --- Responsive Media Queries --- */
+@media (max-width: 900px) {
+    nav {
+        width: 90vw;
+        min-width: 0;
+        max-width: 98vw;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 1.2rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 2rem;
+        justify-content: space-between;
+        gap: 0.2rem;
+        height: 60px;
+        min-height: 60px;
+        max-height: 60px;
+    }
+    nav a { font-size: 1.3rem; padding: 0.7rem; }
+}
+@media (max-width: 600px) {
+    nav {
+        width: 98vw;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 0.5rem;
+        padding: 0.1rem 0.2rem;
+        border-radius: 1.2rem;
+        height: 48px;
+        min-height: 48px;
+        max-height: 48px;
+    }
+    nav a {
+        font-size: 1.1rem;
+        padding: 0.5rem;
+        min-width: 40px;
+        min-height: 40px;
+        max-width: 40px;
+        max-height: 40px;
+    }
+    nav a.active {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        max-width: 44px;
+        max-height: 44px;
+    }
+}
+@media (max-width: 400px) {
+    nav {
+        left: 27%;
+        padding: 0.1rem 0.2rem;
+        border-radius: 1.2rem;
+        height: 48px;
+        min-height: 48px;
+        max-height: 48px;
+    }
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.3rem;
+        min-width: 28px;
+        min-height: 28px;
+        max-width: 28px;
+        max-height: 28px;
+    }
+    nav a.active {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        max-width: 32px;
+        max-height: 32px;
+    }
+}
+@media (min-width: 1201px) {
+    nav {
+        width: 42%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 3rem;
+    }
+}
+@media (min-width: 1201px) and (max-width: 1400px) {
+    nav { left: 30%; }
+}
+@media (min-width: 1401px) and (max-width: 1600px) {
+    nav { left: 35.5%; }
+}
+@media (min-width: 1601px) and (max-width: 1920px) {
+    nav { left: 35%; }
+}
+@media (min-width: 1921px) {
+    nav { left: 35%; }
 }

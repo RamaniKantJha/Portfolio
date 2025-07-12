@@ -1,14 +1,31 @@
 import React from 'react'
 import './Experience.css'
 import {BsPatchCheckFill} from 'react-icons/bs'
+import { motion } from 'framer-motion';
 
 const Experience = () => {
+    const sectionVariants = {
+        hidden: { opacity: 0, y: 60, scale: 0.98 },
+        visible: {
+            opacity: 1, y: 0, scale: 1,
+            transition: { duration: 0.7, ease: 'easeOut', staggerChildren: 0.15 }
+        }
+    };
+    const cardVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+    };
     return (
-        <section id={"experience"}>
-            <h5>What Skills I Have</h5>
-            <h2>My Experience</h2>
+        <motion.section id={"experience"}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+        >
+            <motion.h5 initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>What Skills I Have</motion.h5>
+            <motion.h2 initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}>My Experience</motion.h2>
             <div className={"container experience__container"}>
-                <div className={"experience__frontend"}>
+                <motion.div className={"experience__frontend"} variants={cardVariants}>
                     <h3>Frontend Development</h3>
                     <div className={"experience__content"}>
                         <article className={"experience__details"}>
@@ -54,8 +71,8 @@ const Experience = () => {
                             </div>
                         </article>
                     </div>
-                </div>
-                <div className={"experience__backend"}>
+                </motion.div>
+                <motion.div className={"experience__backend"} variants={cardVariants}>
                     <h3>Backend & Data Science</h3>
                     <div className={"experience__content"}>
                         <article className={"experience__details"}>
@@ -144,9 +161,9 @@ const Experience = () => {
                         </article>
                        
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </motion.section>
     )
 }
 

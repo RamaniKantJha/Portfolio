@@ -54,39 +54,38 @@ const Header = () => {
 
     return (
         <header>
-            <motion.div 
-                className={"container header__container"}
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-            >
-                <motion.h5 variants={itemVariants}>Hello I'm</motion.h5>
-                <motion.h1 
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                <motion.div 
+                    className={"container header__container"}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
                 >
-                    Ramani Kant Jha
-                </motion.h1>
-                <motion.h5 
-                    className={"text-light"}
-                    variants={itemVariants}
-                >
-                    AI/ML Intern
-                </motion.h5>
-                
-                <motion.div variants={itemVariants} style={{ marginBottom: 15 }}>
-                    <CTA />
+                    <motion.h5 variants={itemVariants}>Hello I'm</motion.h5>
+                    <motion.h1 
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    >
+                        Ramani Kant Jha
+                    </motion.h1>
+                    <motion.h5 
+                        className={"text-light"}
+                        variants={itemVariants}
+                    >
+                        AI/ML Intern
+                    </motion.h5>
+                    <motion.div variants={itemVariants} style={{ marginBottom: 15 }}>
+                        <CTA />
+                    </motion.div>
                 </motion.div>
-
-                {/* Move Socials outside stacking flow to avoid extra gap */}
-                <Socials />
-
                 <motion.div 
                     className={"me"}
                     variants={imageVariants}
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
+                    style={{ alignSelf: 'flex-end', marginLeft: '2rem' }}
                 >
                     <motion.img 
                         src={ME} 
@@ -95,7 +94,8 @@ const Header = () => {
                         animate="animate"
                     />
                 </motion.div>
-
+            </div>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <motion.a 
                     href={"#contact"} 
                     className={"scroll__down"}
@@ -116,8 +116,9 @@ const Header = () => {
                 >
                     Scroll to Bottom
                 </motion.a>
-
-            </motion.div>
+            </div>
+            {/* Socials, Avatar, and Scroll to Bottom are now direct children of header */}
+            <Socials />
         </header>
     )
 }

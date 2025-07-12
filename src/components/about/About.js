@@ -103,10 +103,7 @@ const About = () => {
                         />
                     </div>
                 </motion.div>
-                <motion.div 
-                    className={"about__content"}
-                    variants={itemVariants}
-                >
+                <div className="about__bottom-row">
                     <motion.div 
                         className={"about__cards"}
                         variants={containerVariants}
@@ -156,40 +153,43 @@ const About = () => {
                             <small>15+ Completed</small>
                         </motion.article>
                     </motion.div>
-                    
-                    <motion.p
+                    <motion.div 
+                        className={"about__content"}
                         variants={itemVariants}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        viewport={{ once: true }}
                     >
-                        I'm a recent B.Tech graduate in Computer Science and Engineering with a passion for AI, data science, and full-stack development. From building responsive web apps to optimizing machine learning models for real-world use cases, I strive to combine analytical thinking with creative expression. A problem-solver at heart, I’m constantly pushing the boundaries of what technology can do.
-                    </motion.p>
-                    
-                    <motion.a 
-                        href={"#contact"} 
-                        className={"btn btn-primary"}
-                        variants={itemVariants}
-                        whileHover={{ 
-                            scale: 1.05,
-                            boxShadow: "0 20px 40px rgba(0, 212, 255, 0.4)"
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Let's Talk
-                    </motion.a>
-                    <Popup show={showExperience} onClose={() => setShowExperience(false)}>
-                        <React.Suspense fallback={<div>Loading...</div>}>
-                            <LazyExperience />
-                        </React.Suspense>
-                    </Popup>
-                    <Popup show={showProjects} onClose={() => setShowProjects(false)}>
-                        <React.Suspense fallback={<div>Loading...</div>}>
-                            <LazyProjects />
-                        </React.Suspense>
-                    </Popup>
-                </motion.div>
+                        <motion.p
+                            variants={itemVariants}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            viewport={{ once: true }}
+                        >
+                            I'm a recent B.Tech graduate in Computer Science and Engineering with a passion for AI, data science, and full-stack development. From building responsive web apps to optimizing machine learning models for real-world use cases, I strive to combine analytical thinking with creative expression. A problem-solver at heart, I’m constantly pushing the boundaries of what technology can do.
+                        </motion.p>
+                        <motion.a 
+                            href={"#contact"} 
+                            className={"btn btn-primary"}
+                            variants={itemVariants}
+                            whileHover={{ 
+                                scale: 1.05,
+                                boxShadow: "0 20px 40px rgba(0, 212, 255, 0.4)"
+                            }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            Let's Talk
+                        </motion.a>
+                        <Popup show={showExperience} onClose={() => setShowExperience(false)}>
+                            <React.Suspense fallback={<div>Loading...</div>}>
+                                <LazyExperience />
+                            </React.Suspense>
+                        </Popup>
+                        <Popup show={showProjects} onClose={() => setShowProjects(false)}>
+                            <React.Suspense fallback={<div>Loading...</div>}>
+                                <LazyProjects />
+                            </React.Suspense>
+                        </Popup>
+                    </motion.div>
+                </div>
             </motion.div>
         </section>
     )
