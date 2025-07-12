@@ -97,7 +97,7 @@ const Header = () => {
             </div>
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <motion.a 
-                    href={"#contact"} 
+                    href={"#footer"} 
                     className={"scroll__down"}
                     variants={itemVariants}
                     whileHover={{ 

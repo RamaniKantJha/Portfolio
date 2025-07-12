@@ -10,58 +10,308 @@ body {
   scrollbar-width: none !important;    /* Firefox */
 }
 
+/* Ensure navigation positioning is not affected by global styles */
 nav {
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateZ(0) !important;
+}
+
+/* ==========================================================================
+   Component: Navigation
+   ========================================================================== */
+
+nav {
+    /* Glassmorphism effect with fallback */
     background: var(--gradient-glass);
-    width: 42%;
-    min-width: 280px;
-    max-width: 700px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem 1.5rem;
-    z-index: 100;
-    position: fixed;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 3rem;
-    gap: 1rem;
-    border-radius: 2.5rem;
-    height: 65px;
-    min-height: 65px;
-    max-height: 65px;
     backdrop-filter: blur(24px) saturate(120%);
     -webkit-backdrop-filter: blur(24px) saturate(120%);
-    border: 1.5px solid var(--color-glass-border);
-    box-shadow: var(--shadow-glass), 0 2px 24px 0 rgba(0,212,255,0.10);
-    transition: var(--transition);
-    animation: fadeIn 1.2s cubic-bezier(0.4, 0.2, 0.2, 1);
+    
+    /* Positioning - Using !important to override any conflicting styles */
+    position: fixed !important;
+    bottom: max(3rem, env(safe-area-inset-bottom)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateZ(0) !important;
+    width: min(90vw, 500px) !important;
+    z-index: var(--z-fixed) !important;
+    
+    /* Layout */
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    
+    /* Sizing */
+    height: 65px !important;
+    min-height: 65px !important;
+    max-height: 65px !important;
+    border-radius: var(--radius-xl) !important;
+    
+    /* Visual effects */
+    border: 1.5px solid var(--color-glass-border) !important;
+    box-shadow: var(--shadow-glass), 0 2px 24px 0 rgba(0,212,255,0.10) !important;
+    
+    /* Animation */
+    transition: var(--transition) !important;
+    animation: fadeIn 1.2s cubic-bezier(0.4, 0.2, 0.2, 1) !important;
+    
+    /* Performance optimization */
+    contain: layout style paint !important;
 }
 
 nav:hover {
     background: var(--gradient-card);
 }
 
+/* ==========================================================================
+   Navigation Responsive Design
+   ========================================================================== */
+
+/* Large Desktop (1920px and above) */
+@media (min-width: 1920px) {
+    nav {
+        width: min(90vw, 600px) !important;
+        height: 75px !important;
+        min-height: 75px !important;
+        max-height: 75px !important;
+        gap: 1rem !important;
+    }
+    
+    nav a {
+        width: 56px !important;
+        height: 56px !important;
+        min-width: 56px !important;
+        min-height: 56px !important;
+        font-size: 1.8rem !important;
+    }
+}
+
+/* Desktop (1200px - 1919px) */
+@media (max-width: 1919px) and (min-width: 1200px) {
+    nav {
+        width: min(90vw, 550px) !important;
+        height: 70px !important;
+        min-height: 70px !important;
+        max-height: 70px !important;
+        gap: 0.8rem !important;
+    }
+    
+    nav a {
+        width: 52px !important;
+        height: 52px !important;
+        min-width: 52px !important;
+        min-height: 52px !important;
+        font-size: 1.6rem !important;
+    }
+}
+
+/* Small Desktop/Laptop (1024px - 1199px) */
+@media (max-width: 1199px) and (min-width: 1024px) {
+    nav {
+        width: min(90vw, 500px) !important;
+        height: 65px !important;
+        min-height: 65px !important;
+        max-height: 65px !important;
+        gap: 0.6rem !important;
+    }
+    
+    nav a {
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+    nav {
+        width: min(90vw, 450px) !important;
+        height: 60px !important;
+        min-height: 60px !important;
+        max-height: 60px !important;
+        gap: 0.5rem !important;
+        backdrop-filter: blur(16px) saturate(110%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(110%) !important;
+    }
+    
+    nav a {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
+        font-size: 1.4rem !important;
+    }
+}
+
+/* Tablet Portrait (600px - 767px) */
+@media (max-width: 767px) and (min-width: 600px) {
+    nav {
+        width: min(90vw, 400px) !important;
+        height: 58px !important;
+        min-height: 58px !important;
+        max-height: 58px !important;
+        gap: 0.4rem !important;
+        backdrop-filter: blur(14px) saturate(105%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(105%) !important;
+    }
+    
+    nav a {
+        width: 46px !important;
+        height: 46px !important;
+        min-width: 46px !important;
+        min-height: 46px !important;
+        font-size: 1.3rem !important;
+    }
+}
+
+/* Mobile Large (480px - 599px) */
+@media (max-width: 599px) and (min-width: 480px) {
+    nav {
+        width: min(90vw, 350px) !important;
+        height: 55px !important;
+        min-height: 55px !important;
+        max-height: 55px !important;
+        gap: 0.3rem !important;
+        backdrop-filter: blur(12px) saturate(100%) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(100%) !important;
+        background: rgba(10, 10, 35, 0.95) !important;
+    }
+    
+    nav a {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        font-size: 1.2rem !important;
+        padding: 0.6rem !important;
+    }
+}
+
+/* Mobile Medium (375px - 479px) */
+@media (max-width: 479px) and (min-width: 375px) {
+    nav {
+        width: min(90vw, 320px) !important;
+        height: 52px !important;
+        min-height: 52px !important;
+        max-height: 52px !important;
+        gap: 0.25rem !important;
+        backdrop-filter: blur(10px) saturate(95%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(95%) !important;
+        background: rgba(10, 10, 35, 0.95) !important;
+    }
+    
+    nav a {
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        min-height: 42px !important;
+        font-size: 1.1rem !important;
+        padding: 0.5rem !important;
+    }
+}
+
+/* Mobile Small (320px - 374px) */
+@media (max-width: 374px) {
+    nav {
+        width: min(90vw, 300px) !important;
+        height: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
+        gap: 0.2rem !important;
+        backdrop-filter: blur(8px) saturate(90%) !important;
+        -webkit-backdrop-filter: blur(8px) saturate(90%) !important;
+        background: rgba(10, 10, 35, 0.95) !important;
+    }
+    
+    nav a {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        font-size: 1rem !important;
+        padding: 0.4rem !important;
+    }
+}
+
+/* iPhone SE and small devices */
+@media (max-width: 375px) and (max-height: 667px) {
+    nav {
+        width: min(90vw, 280px) !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        max-height: 48px !important;
+    }
+    
+    nav a {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        min-height: 38px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    nav {
+        bottom: max(2rem, env(safe-area-inset-bottom)) !important;
+        height: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
+    }
+    
+    nav a {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        font-size: 1rem !important;
+    }
+}
+
 nav a {
+    /* Base styling */
     background: transparent;
-    padding: 1rem;
-    border-radius: 50%;
+    padding: 0.75rem;
+    border-radius: var(--radius-full);
     display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--color-light);
     font-size: 1.5rem;
-    transition: var(--transition-bounce);
+    
+    /* Layout */
     position: relative;
     overflow: hidden;
+    z-index: 2;
+    
+    /* Sizing */
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    
+    /* Interactive states */
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    
+    /* Reset button styles */
     box-shadow: none;
     outline: none;
     border: none;
-    cursor: pointer;
-    z-index: 2;
+    
+    /* Performance optimization */
+    will-change: transform, box-shadow;
 }
-nav a:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+
+/* Enhanced focus states for accessibility */
+nav a:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+    transform: scale(1.05);
 }
 nav a::before {
     content: '';
@@ -129,103 +379,3 @@ nav a.active::after {
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* --- Responsive Media Queries --- */
-@media (max-width: 900px) {
-    nav {
-        width: 90vw;
-        min-width: 0;
-        max-width: 98vw;
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 1.2rem;
-        padding: 0.2rem 0.5rem;
-        border-radius: 2rem;
-        justify-content: space-between;
-        gap: 0.2rem;
-        height: 60px;
-        min-height: 60px;
-        max-height: 60px;
-    }
-    nav a { font-size: 1.3rem; padding: 0.7rem; }
-}
-@media (max-width: 600px) {
-    nav {
-        width: 98vw;
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 0.5rem;
-        padding: 0.1rem 0.2rem;
-        border-radius: 1.2rem;
-        height: 48px;
-        min-height: 48px;
-        max-height: 48px;
-    }
-    nav a {
-        font-size: 1.1rem;
-        padding: 0.5rem;
-        min-width: 40px;
-        min-height: 40px;
-        max-width: 40px;
-        max-height: 40px;
-    }
-    nav a.active {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
-        max-width: 44px;
-        max-height: 44px;
-    }
-}
-@media (max-width: 400px) {
-    nav {
-        left: 27%;
-        padding: 0.1rem 0.2rem;
-        border-radius: 1.2rem;
-        height: 48px;
-        min-height: 48px;
-        max-height: 48px;
-    }
-    nav a {
-        font-size: 0.9rem;
-        padding: 0.3rem;
-        min-width: 28px;
-        min-height: 28px;
-        max-width: 28px;
-        max-height: 28px;
-    }
-    nav a.active {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        min-height: 32px;
-        max-width: 32px;
-        max-height: 32px;
-    }
-}
-@media (min-width: 1201px) {
-    nav {
-        width: 42%;
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 3rem;
-    }
-}
-@media (min-width: 1201px) and (max-width: 1400px) {
-    nav { left: 30%; }
-}
-@media (min-width: 1401px) and (max-width: 1600px) {
-    nav { left: 35.5%; }
-}
-@media (min-width: 1601px) and (max-width: 1920px) {
-    nav { left: 35%; }
-}
-@media (min-width: 1921px) {
-    nav { left: 35%; }
-}

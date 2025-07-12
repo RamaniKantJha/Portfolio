@@ -1,6 +1,5 @@
 import './Nav.css'
 import {AiOutlineHome, AiOutlineMessage, AiOutlineUser} from "react-icons/ai";
-import {BiBook} from "react-icons/bi";
 import {RiServiceLine} from "react-icons/ri";
 import {useState} from "react";
 import { motion } from "framer-motion";
@@ -77,27 +76,6 @@ const Nav = () => {
                     transition={{ duration: 0.3 }}
                 >
                     <AiOutlineUser />
-                </motion.div>
-            </motion.a>
-            
-            <motion.a 
-                href={"#experience"} 
-                className={activeNav === 'experience' ? 'active' : ''} 
-                onClick={ () => setActiveNav('experience') }
-                variants={itemVariants}
-                whileHover={{ 
-                    scale: 1.2, 
-                    rotate: 5,
-                    transition: { type: "spring", stiffness: 300 }
-                }}
-                whileTap={{ scale: 0.9 }}
-                animate={activeNav === 'experience' ? "active" : "inactive"}
-            >
-                <motion.div
-                    animate={activeNav === 'experience' ? { rotate: 360 } : { rotate: 0 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <BiBook />
                 </motion.div>
             </motion.a>
             

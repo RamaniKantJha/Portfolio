@@ -8,13 +8,19 @@
 }
 
 .experience__container > div {
+    /* Base styling */
     background: var(--gradient-glass);
     padding: var(--space-lg) var(--space-md);
-    border-radius: 2rem;
+    border-radius: var(--radius-xl);
     border: 1.5px solid var(--color-glass-border);
     box-shadow: var(--shadow-glass);
+    
+    /* Animation */
     transition: var(--transition-bounce);
+    
+    /* Performance optimization */
     will-change: transform, box-shadow;
+    transform: translateZ(0);
 }
 .experience__container > div:hover {
     background: var(--gradient-card);
@@ -65,34 +71,3 @@
     transition: var(--transition);
 }
 
-/* --- Responsive Media Queries --- */
-@media (max-width: 1200px) {
-    .experience__container { grid-template-columns: 1fr; gap: var(--space-md); }
-    .experience__container > div { width: 90%; padding: var(--space-md); margin: 0 auto; }
-    .experience__content { padding: var(--space-sm); }
-}
-@media (max-width: 900px) {
-    .experience__container > div { width: 100%; padding: var(--space-md) var(--space-xs); }
-    .experience__content { grid-template-columns: 1fr; }
-}
-@media (max-width: 600px) {
-    .experience__container { gap: var(--space-sm); padding: var(--space-sm) 0; }
-    .experience__container > div { width: 100%; padding: var(--space-sm); }
-    .experience__content { padding: 0; }
-    .experience__details { font-size: var(--font-size-xs); padding: var(--space-xs); }
-}
-
-@media (min-width: 1201px) {
-  .experience__container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    padding: 3rem 6rem;
-  }
-  .experience__details {
-    font-size: 1.25rem;
-  }
-}
-
-@media (min-width: 1201px) {
-  /* Add large-screen styles for Experience here */
-}

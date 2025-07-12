@@ -1,7 +1,7 @@
 header {
     height: fit-content;
-    max-height: 600px;
-    min-height: 400px;
+    max-height: 750px;
+    min-height: 750px;
     padding-top: 0;
     padding-bottom: 0;
     overflow: visible;
@@ -17,8 +17,7 @@ header::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, rgba(0,212,255,0.08) 0%, rgba(255,255,255,0.06) 100%),
-                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    background: linear-gradient(120deg, rgba(0,212,255,0.08) 0%, rgba(255,255,255,0.06) 100%);
     opacity: 0.7;
     z-index: 0;
     pointer-events: none;
@@ -148,29 +147,36 @@ header::before {
 
 /* Avatar (ME) */
 .me {
+    /* Base styling */
     background: var(--gradient-glass);
-    width: clamp(10rem, 32vw, 16rem);
+    width: clamp(8rem, 25vw, 16rem);
     height: auto;
-    /* Remove absolute positioning */
-    /* position: absolue; */
-    /* left: 73%; */
-    /* top:  15rem; */
-    /* transform: translateX(-50%); */
-    border-radius: 50%;
-    overflow: hidden;
-    padding: 0.5rem;
-    box-shadow: var(--shadow-glass), 0 0 40px 10px rgba(0,212,255,0.08);
-    border: 2.5px solid var(--color-glass-border);
-    transition: var(--transition);
+    border-radius: var(--radius-full);
+    
+    /* Positioning */
+    position: absolute;
+    right: clamp(2rem, 5vw, 5%);
+    bottom: clamp(2rem, 10vh, 10%);
+    z-index: 2;
+    
+    /* Layout */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
+    overflow: hidden;
+    padding: 0.5rem;
+    
+    /* Visual effects */
+    border: 2.5px solid var(--color-glass-border);
+    box-shadow: var(--shadow-glass), 0 0 40px 10px rgba(0,212,255,0.08);
+    
+    /* Animation */
+    transition: var(--transition);
     animation: float 6s ease-in-out infinite;
-    margin-bottom: 0.3rem;
-    margin-top: 0.3rem;
-    margin-left: 2rem;
-    align-self: flex-end;
+    
+    /* Performance optimization */
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
 }
 .me:hover {
     box-shadow: var(--shadow-hover), 0 0 60px 20px rgba(0,212,255,0.15);
@@ -227,75 +233,255 @@ header::before {
     60% { transform: translateY(-5px); }
 }
 
-/* --- Responsive Media Queries --- */
-@media (max-width: 1200px) {
-    header { max-height: 650px; min-height: 320px; }
-    .me { width: clamp(12rem, 50vw, 18rem); height: clamp(14rem, 40vw, 25rem); }
-    .header__container h1 { font-size: var(--font-size-lg); }
-}
-@media (max-width: 900px) {
-    header { max-height: 400px; min-height: 260px; }
-    .me { width: clamp(10rem, 60vw, 16rem); height: clamp(12rem, 45vw, 22rem); }
-    .header__container h1 { font-size: var(--font-size-md); }
-    .header__socials {
-        position: static;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 1.2rem;
-        margin-top: 0.2rem;
-        margin-bottom: 0.2rem;
-        transform: none;
+/* ==========================================================================
+   Header Responsive Design
+   ========================================================================== */
+
+/* Large Desktop (1920px and above) */
+@media (min-width: 1920px) {
+    header {
+        min-height: 850px;
+        max-height: 850px;
     }
+    
+    .header__container h1 {
+        font-size: 4.5rem;
+    }
+    
     .me {
-        margin-bottom: 0.3rem;
+        width: clamp(10rem, 30vw, 18rem);
     }
-}
-@media (max-width: 600px) {
-    header { max-height: 340px; min-height: 180px; }
-    .header__container h1 { font-size: var(--font-size-sm); }
-    .me { width: clamp(8rem, 80vw, 14rem); height: clamp(10rem, 60vw, 18rem); }
-    .CTA { margin-bottom: 15px; }
-    .scroll__down {
-        font-size: var(--font-size-xs);
-        padding: 0.4rem 1rem;
-        margin-top: 0.1rem;
-        margin-bottom: 0.1rem;
-    }
-    .header__socials {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 1.2rem;
-        margin-top: 0.1rem;
-        margin-bottom: 0.1rem;
-    }
-    .me {
-        margin-bottom: 0.1rem;
-    }
-}
-@media (max-width: 400px) {
-    header { height: 90vh; }
-    .me { width: 90vw; height: 24vw; }
-    .header__container h1 { font-size: var(--font-size-xs); }
 }
 
-@media (min-width: 1201px) {
-  header {
-    min-height: 90vh;
-    padding-bottom: 5rem;
-  }
-  .header__container {
-    gap: 1rem;
-  }
-  .me {
-    width: 320px;
-    height: 320px;
-  }
-  .header__title {
-    font-size: 3.5rem;
-  }
-  .header__subtitle {
-    font-size: 2rem;
-  }
+/* Desktop (1200px - 1919px) */
+@media (max-width: 1919px) and (min-width: 1200px) {
+    header {
+        min-height: 800px;
+        max-height: 800px;
+    }
+    
+    .header__container h1 {
+        font-size: 3.5rem;
+    }
+    
+    .me {
+        width: clamp(9rem, 28vw, 16rem);
+    }
 }
+
+/* Small Desktop/Laptop (1024px - 1199px) */
+@media (max-width: 1199px) and (min-width: 1024px) {
+    header {
+        min-height: 750px;
+        max-height: 750px;
+    }
+    
+    .header__container h1 {
+        font-size: 3rem;
+    }
+    
+    .me {
+        width: clamp(8rem, 25vw, 14rem);
+    }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+    header {
+        min-height: 700px;
+        max-height: 700px;
+    }
+    
+    .header__container h1 {
+        font-size: 2.5rem;
+    }
+    
+    .header__container h5 {
+        font-size: 1.1rem;
+    }
+    
+    .me {
+        width: clamp(7rem, 22vw, 12rem);
+        right: clamp(1.5rem, 4vw, 4%);
+    }
+    
+    .header__socials {
+        right: 90%;
+    }
+}
+
+/* Tablet Portrait (600px - 767px) */
+@media (max-width: 767px) and (min-width: 600px) {
+    header {
+        min-height: 650px;
+        max-height: 650px;
+    }
+    
+    .header__container h1 {
+        font-size: 2.2rem;
+    }
+    
+    .header__container h5 {
+        font-size: 1rem;
+    }
+    
+    .me {
+        width: clamp(6rem, 20vw, 10rem);
+        right: clamp(1rem, 3vw, 3%);
+    }
+    
+    .header__socials {
+        right: 92%;
+        gap: 0.6rem;
+    }
+    
+    .header__socials a {
+        padding: 0.6rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile Large (480px - 599px) */
+@media (max-width: 599px) and (min-width: 480px) {
+    header {
+        min-height: 600px;
+        max-height: 600px;
+    }
+    
+    .header__container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header__container h5 {
+        font-size: 0.9rem;
+    }
+    
+    .me {
+        width: clamp(5rem, 18vw, 8rem);
+        right: clamp(0.8rem, 2vw, 2%);
+        bottom: clamp(1rem, 8vh, 8%);
+    }
+    
+    .header__socials {
+        right: 94%;
+        gap: 0.5rem;
+    }
+    
+    .header__socials a {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Medium (375px - 479px) */
+@media (max-width: 479px) and (min-width: 375px) {
+    header {
+        min-height: 550px;
+        max-height: 550px;
+    }
+    
+    .header__container h1 {
+        font-size: 1.6rem;
+    }
+    
+    .header__container h5 {
+        font-size: 0.8rem;
+    }
+    
+    .me {
+        width: clamp(4rem, 16vw, 6rem);
+        right: clamp(0.5rem, 1.5vw, 1.5%);
+        bottom: clamp(0.8rem, 6vh, 6%);
+    }
+    
+    .header__socials {
+        right: 95%;
+        gap: 0.4rem;
+    }
+    
+    .header__socials a {
+        padding: 0.4rem;
+        font-size: 0.9rem;
+    }
+    
+    .scroll__down {
+        font-size: 0.7rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* Mobile Small (320px - 374px) */
+@media (max-width: 374px) {
+    header {
+        min-height: 500px;
+        max-height: 500px;
+    }
+    
+    .header__container h1 {
+        font-size: 1.4rem;
+    }
+    
+    .header__container h5 {
+        font-size: 0.7rem;
+    }
+    
+    .me {
+        width: clamp(3.5rem, 14vw, 5rem);
+        right: clamp(0.3rem, 1vw, 1%);
+        bottom: clamp(0.5rem, 4vh, 4%);
+    }
+    
+    .header__socials {
+        right: 96%;
+        gap: 0.3rem;
+    }
+    
+    .header__socials a {
+        padding: 0.3rem;
+        font-size: 0.8rem;
+    }
+    
+    .scroll__down {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+/* iPhone SE and small devices */
+@media (max-width: 375px) and (max-height: 667px) {
+    header {
+        min-height: 450px;
+        max-height: 450px;
+    }
+    
+    .header__container h1 {
+        font-size: 1.3rem;
+    }
+    
+    .me {
+        width: clamp(3rem, 12vw, 4rem);
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    header {
+        min-height: 100vh;
+        max-height: 100vh;
+    }
+    
+    .header__container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .me {
+        width: clamp(4rem, 15vw, 6rem);
+        bottom: clamp(0.5rem, 3vh, 3%);
+    }
+    
+    .header__socials {
+        right: 94%;
+    }
+}
+
+

@@ -14,20 +14,32 @@
 }
 
 .popup__content {
+  /* Base styling */
   background: var(--gradient-glass);
-  border-radius: 1.5rem;
+  border-radius: var(--radius-lg);
   padding: 2.5rem 2rem 2rem 2rem;
+  border: 1.5px solid var(--color-glass-border);
+  
+  /* Sizing */
   max-width: 90vw;
   max-height: 80vh;
   min-width: 320px;
-  overflow-y: auto;
+  
+  /* Layout */
   position: relative;
-  box-shadow: var(--shadow-glass), 0 8px 32px rgba(0,0,0,0.18);
-  border: 1.5px solid var(--color-glass-border);
-  animation: popupIn 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  overflow-y: auto;
+  
+  /* Visual effects */
+  box-shadow: var(--shadow-glass), 0 8px 32px rgba(0,0,0,0.18);
+  
+  /* Animation */
+  animation: popupIn 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+  
+  /* Performance optimization */
+  transform: translateZ(0);
 }
 @keyframes popupIn {
   from { opacity: 0; transform: scale(0.92) translateY(40px); }
@@ -35,19 +47,35 @@
 }
 
 .popup__close {
+  /* Positioning */
   position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 2;
+  
+  /* Base styling */
   background: var(--gradient-card);
   border: none;
   font-size: 2rem;
   color: var(--color-primary);
-  cursor: pointer;
-  z-index: 2;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   padding: 0.3em 0.7em;
-  box-shadow: var(--shadow-glass);
+  
+  /* Interactive states */
+  cursor: pointer;
   transition: var(--transition-bounce);
+  
+  /* Visual effects */
+  box-shadow: var(--shadow-glass);
+  
+  /* Performance optimization */
+  will-change: transform, box-shadow;
+}
+
+.popup__close:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
 }
 .popup__close:hover {
   background: var(--gradient-primary);
@@ -55,15 +83,4 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 600px) {
-  .popup__content {
-    max-width: 98vw;
-    min-width: 0;
-    padding: 1.2rem 0.5rem 1rem 0.5rem;
-    border-radius: 1rem;
-  }
-}
 
-@media (min-width: 1201px) {
-  /* Add large-screen styles for Popup here */
-}

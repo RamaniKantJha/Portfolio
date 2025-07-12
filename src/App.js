@@ -5,6 +5,7 @@ import About from "./components/about/About";
 import Services from "./components/services/Services";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { FaChevronUp } from 'react-icons/fa';
 
 const App = () => {
@@ -28,7 +29,7 @@ const App = () => {
     };
 
     return (
-        <>
+        <ErrorBoundary>
             {/* Back to Top Button */}
             <button
                 onClick={scrollToTop}
@@ -61,7 +62,7 @@ const App = () => {
             <Services />
             <Contact />
             <Footer />
-        </>
+        </ErrorBoundary>
     )
 }
 

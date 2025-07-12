@@ -179,12 +179,30 @@ const About = () => {
                             Let's Talk
                         </motion.a>
                         <Popup show={showExperience} onClose={() => setShowExperience(false)}>
-                            <React.Suspense fallback={<div>Loading...</div>}>
+                            <React.Suspense fallback={
+                                <div className="loading-skeleton">
+                                    <div className="skeleton-header"></div>
+                                    <div className="skeleton-content">
+                                        <div className="skeleton-item"></div>
+                                        <div className="skeleton-item"></div>
+                                        <div className="skeleton-item"></div>
+                                    </div>
+                                </div>
+                            }>
                                 <LazyExperience />
                             </React.Suspense>
                         </Popup>
                         <Popup show={showProjects} onClose={() => setShowProjects(false)}>
-                            <React.Suspense fallback={<div>Loading...</div>}>
+                            <React.Suspense fallback={
+                                <div className="loading-skeleton">
+                                    <div className="skeleton-header"></div>
+                                    <div className="skeleton-content">
+                                        <div className="skeleton-item"></div>
+                                        <div className="skeleton-item"></div>
+                                        <div className="skeleton-item"></div>
+                                    </div>
+                                </div>
+                            }>
                                 <LazyProjects />
                             </React.Suspense>
                         </Popup>
